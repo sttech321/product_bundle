@@ -20,9 +20,11 @@ function hide_product_data_tabs() {
   if ( 'product' !== get_post_type() ) {
     return;
   }
+  
   ?>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
+      console.log("THis is my new  custom code.");
       $('.show_if_bundle_product').hide();
       $('select#product-type').change(function() {
         if ($(this).val() === 'product_bundle') {
@@ -38,17 +40,55 @@ function hide_product_data_tabs() {
 add_action('admin_footer', 'hide_product_data_tabs');
 
 // Custom search bar in product data panels
+// function bundle_product_search_bar() {
+//   echo '<div id="bundle_product_options" class="bundle_product_search panel woocommerce_options_panel">';
+//   echo '<form action="" method="POST">';
+//   echo '<input type="text" id="bundle_product_search_input" name="bundle_product_search_input" placeholder="Search for products..." autocomplete="off">';
+//   echo '<input type="button" id="bundle_product_search_btn" value="Search">';
+//   echo '<div id="bundle_product_search_results"></div>';
+//   echo '</form>';
+//   echo '</div>';
+// }
+
+// add_action('woocommerce_product_data_panels', 'bundle_product_search_bar');
+
+
 function bundle_product_search_bar() {
+  global $post;
+
   echo '<div id="bundle_product_options" class="bundle_product_search panel woocommerce_options_panel">';
   echo '<form action="" method="POST">';
   echo '<input type="text" id="bundle_product_search_input" name="bundle_product_search_input" placeholder="Search for products..." autocomplete="off">';
   echo '<input type="button" id="bundle_product_search_btn" value="Search">';
-  echo '<div id="bundle_product_search_results"></div>';
+  echo '<div id="bundle_product_search_results">';
+
+  if (!empty($post->ID)) {
+      // Get the selected products associated with the current product.
+      $selected_products = get_post_meta($post->ID, 'select_product', true);
+
+      if (!empty($selected_products)) {
+          echo '<h4>Selected Products:</h4>';
+          echo '<ul>';
+          foreach ($selected_products as $product_id) {
+              $product = wc_get_product($product_id);
+              if ($product) {
+                  echo '<tr style="width:50px;"><td>';
+                  echo '<h5>' . $product->get_name() . '</h5>';
+                  echo '<span>' . $product->get_image() . '</span>';
+                  echo  '</td></tr>';
+              }
+          }
+          echo '</ul>';
+      }
+  }
+
   echo '</div>';
   echo '</form>';
+  echo '</div>';
 }
 
 add_action('woocommerce_product_data_panels', 'bundle_product_search_bar');
+
 
 // AJAX callback to fetch search results
 function bundle_product_search_results_callback() {
@@ -91,7 +131,6 @@ function bundle_product_search_script() {
   <script>
     jQuery(document).ready(function($) {
       $('#bundle_product_search_btn').click(function(e) {
-        event.preventDefault();
         var searchQuery = $('#bundle_product_search_input').val();
         if (searchQuery !== '') {
           $.ajax({
@@ -124,12 +163,12 @@ function wp_save_custom_tab_data($post_id) {
   if (!is_array($existing_selected_products)) {
       $existing_selected_products = array();
   }
-0
+
   // Merge the existing selections with the new ones and remove duplicates
   $updated_selected_products = array_unique(array_merge($existing_selected_products, $product_select));
-
   update_post_meta($post_id, 'select_product', $updated_selected_products);
 }
+
 add_action('woocommerce_process_product_meta', 'wp_save_custom_tab_data');
 
 function wp_display_single_product_page() {
@@ -163,7 +202,7 @@ function display_selected_products_in_cart($product_name, $cart_item) {
       foreach ($selected_products as $product_id) {
           $product = wc_get_product($product_id);
           if ($product) {
-              $selected_product_names[] = $product->get_image();       
+              $selected_product_names[] = $product->get_image();
               $selected_product_names[] = $product->get_name();
           }
       }
