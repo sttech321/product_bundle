@@ -1,61 +1,42 @@
-=== Product Bundles ===
+**Product Bundles Plugin**
+  Tags: WooCommerce, Product Bundle
 
-Tags: Woocommerce product bundle
+**Description:**
 
-Bundle two or more woocommerce products together and sell them at a discounted rate.
+  The Product Bundles plugin simplifies the process of bundling two or more WooCommerce products together and offering them at a discounted rate. With minimal setup required, you can effortlessly create bundled products to enhance your store offerings.
 
-== Description ==
+**Features:**
 
-Product Bundle allows you to bundle two or more woocommerce products together and sell them at a discounted rate. No complex configurations are required, just few steps you can setup and sell Bundled Products. 
+  :- Easy Creation: Create bundled products seamlessly.
+  :- Flexible Pricing: Set up flexible pricing methods for your bundles.
+  :- Customization: Customize bundle product titles and short descriptions to suit your needs.
+  :- Automatic Stock Management: Automatically manage stock levels for bundled products.
 
-= Features =
-* Creating bundled products with ease
-* Flexible pricing methods
-* Allows you to override bundle products Title and Short Description
-* Automatic stock management.
+**Installation:**
 
-= Documentation =
-* [Getting Started](http://sarkware.com/wc-product-bundle-bundle-products-together-and-sell-them-with-a-discounted-rate/)
-* [Customize Bundle Rendering Behavior - Product](http://sarkware.com/changing-bundles-rendering-behaviour-wc-product-bundles/)
-* [Customize Bundle Rendering Behavior - Cart](http://sarkware.com/changing-rendering-behavior-bundle-item-on-cart-wc-product-bundles/)
+  :- Ensure you have the latest version of the WooCommerce plugin installed (version 2.2 or above).
+  :- Unzip the plugin file and upload its contents to the /wp-content/plugins/ directory of your WordPress installation.
+  :- Activate the plugin through the 'Plugins' menu in WordPress.
+  :- Instructions for Creating Bundle Products:
 
-== Installation ==
-1. Ensure you have latest version of WooCommerce plugin installed ( 2.2 or above )
-2. Unzip and upload contents of the plugin to your /wp-content/plugins/ directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
+**Adding Single Products:**
 
-== Screenshots ==
-1. Wcpb 'Bundled' product type
-2. Wcpb search and add products to the bundle
-3. Wcpb individual bundle product's options
-4. Wcpb bundled product page
+  :- Before creating a bundle product, ensure you have added the individual products you want to include in the bundle.
 
-== Changelog ==
+**Creating Bundle Products:**
 
-= 1.0.0 =
-* First Public Release.
+**Step 1:** Navigate to the 'Add New Product' menu.
+  :- Enter the title and upload an image for your bundle product. This title will be displayed alongside the bundle product.
 
-= 1.0.1 =
-* Option Label text updates
-* 'wcpb/bundle/before/product/content/rendering' and 'wcpb/bundle/after/product/content/rendering' action hook introduced.
+**Screenshot Example**
+                 :-  https://prnt.sc/x1VLvkrBUDLS
+**Step 2:** Select the 'Product Bundle' tab from the dropdown menu.
+  :- Click on the 'Bundle Product' tab.
+ :- Use the search bar to find and select existing products that you want to include in the bundle. The product title should be at least 5 letters long.
 
-= 1.0.2 =
-* Global visibility option for bundles
+    Screenshot Example 1  :- https://prnt.sc/WXpocfS1-JrV
+    Screenshot Example 2  :- https://prnt.sc/vq9S9QaN9GGp
+    Shop Page Example :- https://prnt.sc/uttcW4th2ZW0
+    Add to Cart Page Example :- https://prnt.sc/8kMeU-C1huon
 
-= 1.0.3 =
-* Bundle re order issue fixed
-* introduced filter for 'instock' & 'out of stock' labels. 'wcpb/bundle/instock/label' and 'wcpb/bundle/outofstock/label'
-
-= 1.0.4 =
-* wp-admin 'Screen Option' tab issue fixed
-
-= 1.0.5 =
-* Internationalization ( i18n ) support added
-* Text domain is 'wc-product-bundles'
-
-= 1.0.6 =
-* Bundles inventory sync issue fixed
-
-= 1.0.7 =
-* Bundled items description issue fixed
-* Shipping weight sync added ( The weight will be the sum of bundled items, if no weight is specified )
+  By following these steps, you can efficiently create bundled products and enhance your WooCommerce store offerings.
