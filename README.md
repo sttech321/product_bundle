@@ -30,6 +30,7 @@
 
 **Screenshot Example**
                  :-  https://prnt.sc/x1VLvkrBUDLS
+
 **Step 2:** Select the 'Product Bundle' tab from the dropdown menu.
   :- Click on the 'Bundle Product' tab.
  :- Use the search bar to find and select existing products that you want to include in the bundle. The product title should be at least 5 letters long.
