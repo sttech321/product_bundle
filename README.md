@@ -36,9 +36,12 @@
      :- Click on the 'Bundle Product' tab.
      :- Use the search bar to find and select existing products that you want to include in the bundle. The product title should be at least 5 letters long.
 
-Screenshot Example 1  :- https://prnt.sc/WXpocfS1-JrV
-Screenshot Example 2  :- https://prnt.sc/vq9S9QaN9GGp
-Shop Page Example :- https://prnt.sc/uttcW4th2ZW0
-Add to Cart Page Example :- https://prnt.sc/8kMeU-C1huon
+ Screenshot Example 1  :- https://prnt.sc/WXpocfS1-JrV
+
+ Screenshot Example 2  :- https://prnt.sc/vq9S9QaN9GGp
+
+ Shop Page Example :- https://prnt.sc/uttcW4th2ZW0
+
+ Add to Cart Page Example :- https://prnt.sc/8kMeU-C1huon
 
   By following these steps, you can efficiently create bundled products and enhance your WooCommerce store offerings.
