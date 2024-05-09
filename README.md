@@ -1,9 +1,10 @@
 **Product Bundles Plugin**
-  Tags: WooCommerce, Product Bundle
+
+    :- Tags: WooCommerce, Product Bundle
 
 **Description:**
 
-  The Product Bundles plugin simplifies the process of bundling two or more WooCommerce products together and offering them at a discounted rate. With minimal setup required, you can effortlessly create bundled products to enhance your store offerings.
+    :- The Product Bundles plugin simplifies the process of bundling two or more WooCommerce products together and offering them at a discounted rate. With minimal setup required, you can effortlessly create bundled products to enhance your store offerings.
 
 **Features:**
 
