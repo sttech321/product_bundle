@@ -6,14 +6,18 @@ Description: Offer personalized product bundles, bulk discount packages, and ass
 Author: Supremetechnologies
 Author URI: https://supremetechnologiesindia.com/
 Text-domain: product-bundle
+Woocommerce Version: work with 8.8.3 
 */
 
-// include admin.php file code  for attach admin menu of product bundle.
+
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 
 include(plugin_dir_path(__FILE__) . "/include/functions.php");
 include(plugin_dir_path(__FILE__) . '/admin/admin.php');
-
-// $plugin_dir_path = plugin_dir_path(__FILE__);
-// include($plugin_dir_path . '/admin/admin.php');
 
 ?>
