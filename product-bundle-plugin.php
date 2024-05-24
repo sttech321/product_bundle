@@ -14,7 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// here we link the admin.php and functions.php file
-include(plugin_dir_path(__FILE__) . "/include/functions.php");
-include(plugin_dir_path(__FILE__) . '/admin/admin.php');
+// Check if WooCommerce is active
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+    // Include files only when WooCommerce is active
+    include( plugin_dir_path( __FILE__ ) . "/include/functions.php" );
+    include( plugin_dir_path( __FILE__ ) . '/admin/admin.php' );
+
+}
 ?>
