@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 //  Here i have add the css of this file. 
 function custom_admin_footer_css() {
     echo '<style>
@@ -28,6 +29,8 @@ function custom_admin_footer_css() {
 add_action('admin_footer', 'custom_admin_footer_css');
 
 
+=======
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
 // Wrap your code in a function
 function custom_bundle_product_plugin_init() {
     // Check if WooCommerce is active
@@ -38,7 +41,11 @@ function custom_bundle_product_plugin_init() {
           }
           add_filter('product_type_selector', 'add_bundle_product_type_option');
            
+<<<<<<< HEAD
            //  Here i have add code for product bundle selector in product type selector dropdown. 
+=======
+           
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function set_default_product_type($product_type) {
             if (empty($_REQUEST['product-type']) && isset($_GET['post'])) {
                 $post_id = $_GET['post'];
@@ -52,7 +59,11 @@ function custom_bundle_product_plugin_init() {
           }
           add_filter('default_product_type', 'set_default_product_type');
            
+<<<<<<< HEAD
             //  Here i have add code for product bundle data tab. 
+=======
+           
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function add_bundle_product_custom_tab($tabs) {
             $tabs['bundle_product_tab'] = array(
                 'label'    => __('Bundle Product', 'product-bundle'),
@@ -63,6 +74,7 @@ function custom_bundle_product_plugin_init() {
             return $tabs;
           }
           add_filter('woocommerce_product_data_tabs', 'add_bundle_product_custom_tab');
+<<<<<<< HEAD
 
           //  Here i have add the cod efor if product bundle is selected display bundle product tab selected. 
           function force_select_product_bundle() {
@@ -84,6 +96,27 @@ function custom_bundle_product_plugin_init() {
           add_action('admin_footer', 'force_select_product_bundle');
         
           
+=======
+           
+           
+          function force_select_product_bundle() {
+            echo '<script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    // Select "Product Bundle" as the product type
+                    $("select#product-type").val("product_bundle").change();
+           
+                    // Show the "Bundle Product" tab by triggering a click event on it
+                    $(".show_if_bundle_product").find("a").click();
+           
+                    // Ensure that the tab content is visible
+                    $(".show_if_bundle_product").show();
+                });
+            </script>';
+          }
+           
+          add_action('admin_footer', 'force_select_product_bundle');
+           
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function hide_product_data_tabs() {
             if ('product' !== get_post_type()) {
                 return;
@@ -107,11 +140,19 @@ function custom_bundle_product_plugin_init() {
             </script>
             <?php
           }
+<<<<<<< HEAD
           
           add_action('admin_footer', 'hide_product_data_tabs');
            
           
         // Here i have created a search for search the product and display in suggestion dropdown.
+=======
+           
+          add_action('admin_footer', 'hide_product_data_tabs');
+           
+          
+          // Bundle Product tab
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function bundle_product_search_bar() {
               global $post;
               $html = '';
@@ -132,9 +173,15 @@ function custom_bundle_product_plugin_init() {
                   $html .= '<h2>Selected Products:</h2>';
                   $html .= '<ul id="selected-products-list">'; 
                   foreach ($selected_products as $product) {
+<<<<<<< HEAD
                       $html .= '<li class="bundle_product_details"><span class="selected_product_label">' . esc_html($product['label']) . '</span>';
                       $html .= '<img class="selected_product_image" src =' . esc_html($product['image']) . '>';
                       $html .=  '<input type="submit" value="remove" class="remove" id="remove"></li>';
+=======
+                      $html .= '<li style="margin-right:20px; margin-left:20px;">' . esc_html($product['label']) . '</li>';
+                      $html .= '<li><img  class="product_image" src =' . esc_html($product['image']) . ' style="width: 80px;"></li>';
+                      $html .=  '<input type="submit" value="remove" class="remove" id="remove">';
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
                   }
                   $html .= '</ul>';
               }
@@ -145,6 +192,7 @@ function custom_bundle_product_plugin_init() {
           
           add_action('woocommerce_product_data_panels', 'bundle_product_search_bar');
           
+<<<<<<< HEAD
         // Here i have add the code for remove the selected product if we don't want to create with bundle.
           function bundle_product_search_scripts() {
               ?>
@@ -192,6 +240,55 @@ function custom_bundle_product_plugin_init() {
                         }
                     });
                 });
+=======
+          function bundle_product_search_scripts() {
+              ?>
+              <script>
+                  jQuery(document).ready(function($) {
+              // Remove product when the remove button is clicked
+              $(document).on('click', '.remove', function(e) {
+                  e.preventDefault();
+          
+                  // Get the parent <ul> element
+                  var $parentUl = $(this).closest('ul');
+          
+                  // Get the product label
+                  var productLabel = $parentUl.find('li.product-label').text();
+          
+                  // Confirm removal
+                  var confirmRemove = confirm('Are you sure you want to remove the product: ' + productLabel + '?');
+          
+                  if (confirmRemove) {
+                      // Remove the product <ul> from the DOM
+                      $parentUl.remove();
+          
+                      // You may also want to send an AJAX request to remove the data from the server
+                      var productId = $parentUl.data('product-id');
+                      
+                      // Add your AJAX request here to delete the product data based on productId
+                      // Example:
+                      $.ajax({
+                          url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                          type: 'POST',
+                          data: {
+                              action: 'remove_selected_product',
+                              product_id: productId,
+                              post_id: <?php echo get_the_ID(); ?>,
+                              security: '<?php echo wp_create_nonce("your_ajax_nonce"); ?>'
+                          },
+                          success: function(response) {
+                              // Handle the server response
+                              console.log(response);
+                          },
+                          error: function(error) {
+                              console.log(error);
+                          }
+                      });
+                  }
+              });
+          });
+          
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
               </script>
               <?php
           }
@@ -200,7 +297,11 @@ function custom_bundle_product_plugin_init() {
           // Add this to your functions.php file or a custom plugin
           add_action('wp_ajax_remove_selected_product', 'remove_selected_product');
           add_action('wp_ajax_nopriv_remove_selected_product', 'remove_selected_product');
+<<<<<<< HEAD
         // here i have added the code for remove button ajax request for remove produt.
+=======
+          
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function remove_selected_product() {
               check_ajax_referer('your_ajax_nonce', 'security');
               $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
@@ -228,7 +329,11 @@ function custom_bundle_product_plugin_init() {
           }
           
           
+<<<<<<< HEAD
         // here is the for saved the selected product in database.
+=======
+          
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function save_selected_products_callback() {
               $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
               $metakey = '_selected_bundle_products';
@@ -262,12 +367,22 @@ function custom_bundle_product_plugin_init() {
           }
           
           
+<<<<<<< HEAD
           add_action('wp_ajax_save_selected_products', 'save_selected_products_callback');
           add_action('wp_ajax_nopriv_save_selected_products', 'save_selected_products_callback');
           
         // here i have add the code for send ajax request for saved the selected product using ajax.
         // here i have added the code multiple purpose i have add code for loader also when we will select the product loader will load that time.
         // here also i have add remove button for delete selected product before publish or update the product on frontend.
+=======
+          
+          
+          add_action('wp_ajax_save_selected_products', 'save_selected_products_callback');
+          add_action('wp_ajax_nopriv_save_selected_products', 'save_selected_products_callback');
+          
+           
+          
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           function bundle_product_search_script() {
             ?>
             <script>
@@ -281,11 +396,14 @@ function custom_bundle_product_plugin_init() {
                     searchField.autocomplete({
                         source: function(request, response) {
                             if (request.term.length < 5) {
+<<<<<<< HEAD
                               // Show loader
                               $('#bundle_product_search_input').removeClass('ui-autocomplete-loading');
                                 setTimeout(function() {
                                     $('#bundle_product_search_input').removeClass('ui-autocomplete-loading');
                                 }, 500);
+=======
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
                                 $('#bundle_product_search_results').css({
                                     "display": "flex",
                                     "text-align": "left",
@@ -295,12 +413,15 @@ function custom_bundle_product_plugin_init() {
                                 response([]);
                             } else {
                                 $('#bundle_product_search_results').text('');
+<<<<<<< HEAD
                                   // Show loader
                                   $('#bundle_product_search_input').addClass('ui-autocomplete-loading');
                                   setTimeout(function() {
                                       $('#bundle_product_search_input').removeClass('ui-autocomplete-loading');
                                   }, 1000); 
           
+=======
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
                                 $.ajax({
                                     url: '<?php echo admin_url('admin-ajax.php'); ?>',
                                     dataType: 'json',
@@ -347,6 +468,7 @@ function custom_bundle_product_plugin_init() {
                                 selectedProductsContainer.append(productDetail);
            
                                 $('#loader').css({
+<<<<<<< HEAD
                                   "width": "40%",
                                   "height": "40%",
                                   "display": "block",
@@ -362,6 +484,21 @@ function custom_bundle_product_plugin_init() {
                               searchField.val('');
                               return false;
                           }
+=======
+                                    "width": "40%",
+                                    "height": "40%",
+                                    "display": "block",
+                                    "position": "absolute",
+                                    "z-index": "9999",
+                                }).show();
+                                setTimeout(function() {
+                                    $('#loader').hide();
+                                }, 3000);
+           
+                                searchField.val('');
+                                return false;
+                            }
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
                         }
                     });
            
@@ -383,6 +520,10 @@ function custom_bundle_product_plugin_init() {
           add_action('admin_footer', 'bundle_product_search_script');
           
            
+<<<<<<< HEAD
+=======
+           
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
           // AJAX callback to fetch search results
           function bundle_product_search_results_callback() {
             $search_query = isset($_POST['search_query']) ? sanitize_text_field($_POST['search_query']) : '';
@@ -390,6 +531,7 @@ function custom_bundle_product_plugin_init() {
                 'post_type' => 'product',
                 'post_status' => 'publish',
                 's' => $search_query,
+<<<<<<< HEAD
                 'posts_per_page' => -1,
                 'meta_query'     => array(
                     array(
@@ -397,6 +539,9 @@ function custom_bundle_product_plugin_init() {
                         'compare' => 'NOT EXISTS',         // Exclude posts where this meta key exists
                     ),
                 ),
+=======
+                'posts_per_page' => -1
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
             );
            
             $query = new WP_Query($args);

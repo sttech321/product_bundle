@@ -9,6 +9,11 @@ Text-domain: product-bundle
 Woocommerce Version: work with 8.8.3 
 */
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a12ae334955435e5efcdcc69a687fd42bbe0febf
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
