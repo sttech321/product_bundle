@@ -14,8 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
+// here we link the admin.php and functions.php file
 include(plugin_dir_path(__FILE__) . "/include/functions.php");
 include(plugin_dir_path(__FILE__) . '/admin/admin.php');
-
 ?>

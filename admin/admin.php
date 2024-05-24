@@ -103,7 +103,7 @@ function custom_bundle_product_plugin_init() {
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
                     function showBundleTab() {
-                        if ($('select#product-type').val() === 'product_bundle') {
+                        if ($('select#product-type').val() === 'product_bundle') 
                             $('.show_if_bundle_product').show();
                         } else {
                             $('.show_if_bundle_product').hide();
