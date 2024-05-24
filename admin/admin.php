@@ -32,7 +32,7 @@ function custom_admin_footer_css() {
         margin-top: 10px;
     }
     .searchbar input#bundle_product_search_input:hover{
-        background-color:#ba00851a;
+        // background-color:#fff;
     }
     </style>';
 }
