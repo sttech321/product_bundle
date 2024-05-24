@@ -23,6 +23,17 @@ function custom_admin_footer_css() {
     #remove {
         margin-bottom: 20px !important;
     }
+    .searchbar input#bundle_product_search_input {
+        width: 500px;
+        height: 50px;
+        border: 1px solid black;
+        background: #3d3e4608;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .searchbar input#bundle_product_search_input:hover{
+        background-color:#ba00851a;
+    }
     </style>';
 }
 add_action('admin_footer', 'custom_admin_footer_css');
@@ -117,8 +128,10 @@ function custom_bundle_product_plugin_init() {
               $html = '';
               $html .= '<div id="bundle_product_options" class="bundle_product_search panel woocommerce_options_panel">';
               $html .= '<form action="" method="POST">';
+              $html .= '<div class="searchbar">';
               $html .= '<input type="text" id="bundle_product_search_input" name="bundle_product_search_input" placeholder="Search for products..." autocomplete="off">';
-              $html .= '<div id="bundle_product_search_results"></div>';
+              $html .= '</div>';
+              $html .= '<div id="bundle_product_search_results"></div><br><br>';
               $html .= '<div id="selected_products"></div>';
               $html .= '<div id="loader" style="display:none; position:absolute; bottom:100px; left:600px;">';
               $html .= '<img src="https://i.gifer.com/ZKZg.gif" alt="Loading..." style="width:100px; height:100px; ">';
